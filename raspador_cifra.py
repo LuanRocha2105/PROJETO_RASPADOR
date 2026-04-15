@@ -1,5 +1,6 @@
 import requests
 from bs4 import BeautifulSoup
+import unicodedata
 
 BASE_URL = "https://www.cifraclub.com.br/"
 
@@ -34,15 +35,14 @@ def buscar_cifra(caminho):
     cifra_tag = soup.find("pre")
 
     for elemento in cifra_tag.children:
-        # Elemento de texto puro = letra da música
+        
         if isinstance(elemento, str):
             print(elemento, end="")
-        # Tag <b> = acorde
+        # O acorde é tag <b>
         elif elemento.name == "b":
             print(elemento.get_text(), end="")
  
     print()
-
 
 
     
