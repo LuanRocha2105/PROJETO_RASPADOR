@@ -4,6 +4,13 @@ import unicodedata
 
 BASE_URL = "https://www.cifraclub.com.br/"
 
+def normalizar_texto(texto):
+    texto = texto.strip().lower()
+    texto = unicodedata.normalize("NFD", texto)
+    texto = "".join(c for c in texto if unicodedata.category(c) != "Mn")
+    texto = "-".join(texto.split())
+    return texto
+
 def buscar_cifra(caminho):
     url = BASE_URL + caminho + "/"
     print(f"\nAcessando: {url}")
