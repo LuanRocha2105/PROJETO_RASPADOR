@@ -11,6 +11,13 @@ def normalizar_texto(texto):
     texto = "-".join(texto.split())
     return texto
 
+def formatar_caminho():
+    artista = input("Digite o nome do artista (ex: Legião Urbana): ")
+    musica  = input("Digite o nome da música  (ex: Tempo Perdido): ")
+    caminho = f"{normalizar_texto(artista)}/{normalizar_texto(musica)}"
+    print(f"\nCaminho gerado: {caminho}")
+    return caminho
+
 def buscar_cifra(caminho):
     url = BASE_URL + caminho + "/"
     print(f"\nAcessando: {url}")
