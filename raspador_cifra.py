@@ -23,6 +23,62 @@ def formatar_caminho():
     print(f"\nCaminho gerado: {caminho}")
     return caminho
 
+def gerar_pdf(nome_arquivo, titulo, artista, linhas_cifra):
+    doc = SimpleDocTemplate(
+        nome_arquivo,
+        pagesize=A4,
+        leftMargin=2 * cm,
+        rightMargin=2 * cm,
+        topMargin=2 * cm,
+        bottomMargin=2 * cm,
+    )
+ 
+    styles = getSampleStyleSheet()
+ 
+    estilo_titulo = ParagraphStyle(
+        "Titulo",
+        parent=styles["Title"],
+        fontSize=18,
+        spaceAfter=4,
+    )
+    estilo_artista = ParagraphStyle(
+        "Artista",
+        parent=styles["Normal"],
+        fontSize=12,
+        spaceAfter=16,
+        textColor="#555555",
+    )
+    estilo_cifra = ParagraphStyle(
+        "Cifra",
+        parent=styles["Normal"],
+        fontName="Courier",
+        fontSize=10,
+        leading=14,
+        spaceAfter=0,
+        alignment=TA_LEFT,
+    )
+    estilo_acorde = ParagraphStyle(
+        "Acorde",
+        parent=estilo_cifra,
+        textColor="#1a56db",
+    )
+ 
+    story = []
+    story.append(Paragraph(titulo, estilo_titulo))
+    story.append(Paragraph(artista, estilo_artista))
+ 
+    for linha in linhas_cifra:
+        texto = linha["texto"]
+        texto = texto.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;")
+ 
+        if linha["tipo"] == "acorde":
+            story.append(Paragraph(texto, estilo_acorde))
+        else:
+            story.append(Paragraph(texto if texto.strip() else "&nbsp;", estilo_cifra))
+ 
+    doc.build(story)
+    print(f"\nPDF gerado com sucesso: {nome_arquivo}")
+
 def buscar_cifra(caminho):
     url = BASE_URL + caminho + "/"
     print(f"\nAcessando: {url}")
