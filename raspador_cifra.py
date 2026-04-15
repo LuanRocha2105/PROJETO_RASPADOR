@@ -67,8 +67,7 @@ def buscar_cifra(caminho):
     print()
 
 
-    
 
 
-caminho = input("Digite o caminho da música (ex: jorge-ben-jor/take-it-easy): ")
+caminho = formatar_caminho()
 buscar_cifra(caminho)
