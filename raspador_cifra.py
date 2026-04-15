@@ -1,6 +1,11 @@
 import requests
 from bs4 import BeautifulSoup
 import unicodedata
+from reportlab.lib.pagesizes import A4
+from reportlab.lib.styles import getSampleStyleSheet, ParagraphStyle
+from reportlab.lib.units import cm
+from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer
+from reportlab.lib.enums import TA_LEFT
 
 BASE_URL = "https://www.cifraclub.com.br/"
 
