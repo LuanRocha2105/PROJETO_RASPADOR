@@ -16,23 +16,21 @@ def buscar_cifra(caminho):
         return
 
     soup = BeautifulSoup(resposta.text, "html.parser")
-
-    titulo = soup.find("div", class_="g-1 g-fix cifra").find("h1")
-    artista = soup.find("h2").find("a") 
     
-    if titulo:
-        print(f"Música : {titulo.get_text(strip=True)}")
-    else:
-        print("Título não encontrado.")
-    
-    if artista:
-        print(f"Artista: {artista.get_text(strip=True)}")
-    else:
-        print("Artista não encontrado.")
+    titulo_tag  = soup.find("div", class_="g-1 g-fix cifra").find("h1")
+    artista_tag = soup.find("h2").find("a")
+ 
+    titulo  = titulo_tag.get_text(strip=True)  if titulo_tag  else "Título desconhecido"
+    artista = artista_tag.get_text(strip=True) if artista_tag else "Artista desconhecido"
 
-    print("\nCIFRA:\n")   
+    print(f"Música : {titulo}")
+    print(f"Artista: {artista}")
+    print("\nCIFRA:\n")
 
     cifra_tag = soup.find("pre")
+    linhas_cifra = []
+    linha_atual  = ""
+    tipo_atual   = "letra"
 
     for elemento in cifra_tag.children:
         
