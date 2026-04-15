@@ -1,1 +1,1 @@
-Um programa que pega cifras do CIfra Club usando raspagem de dados 
+Um programa que pega cifras do CIfra Club usando raspagem de dados e gera um pdf
