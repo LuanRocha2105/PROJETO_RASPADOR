@@ -128,6 +128,10 @@ def buscar_cifra(caminho):
     print()
 
 
+    nome_arquivo = caminho.replace("/", "_") + ".pdf"
+    gerar_pdf(nome_arquivo, titulo, artista, linhas_cifra)
+
+
 
 
 caminho = formatar_caminho()
