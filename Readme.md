@@ -23,19 +23,20 @@ cd raspador-cifras
 ```
 
 - (Recomendado) Crie um ambiente virtual
-
+```bash
 python -m venv .venv
 source .venv/bin/activate      # Linux/macOS
 .venv\Scripts\activate         # Windows
-
+```
 - Instale as dependências
+```
 pip install -r requirements.txt
-
+```
 
 # Como usar
-
+```
 python raspador_cifra.py
-
+```
 
 O programa solicitará o nome do artista e da música:
 
