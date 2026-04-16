@@ -17,10 +17,10 @@ Ferramenta de linha de comando que busca cifras no [Cifra Club](https://www.cifr
 
 - Clone o repositório
 
-'''
+```
 git clone https://github.com/seu-usuario/raspador-cifras.git
 cd raspador-cifras
-'''
+```
 
 - (Recomendado) Crie um ambiente virtual
 
